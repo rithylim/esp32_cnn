@@ -1,0 +1,21 @@
+dependencies:
+  iamflinks/i2c_lcd_pcf8574:
+    component_hash: ae9c5a92cbfa22b78fcd426922583536eed28adba4ea8f7577cad27e206d4149
+    dependencies:
+    - name: idf
+      require: private
+      version: '>=4.4.0'
+    source:
+      registry_url: https://components.espressif.com/
+      type: service
+    version: 1.0.1
+  idf:
+    source:
+      type: idf
+    version: 5.4.1
+direct_dependencies:
+- iamflinks/i2c_lcd_pcf8574
+- idf
+manifest_hash: 43b5059746de4d402e2ac10a10e9020bd01acdaffd9ef1916a7eebdfd3695153
+target: esp32
+version: 2.0.0
