@@ -1,35 +1,30 @@
-| Supported Targets | ESP32 | ESP32-C2 | ESP32-C3 | ESP32-C6 | ESP32-H2 | ESP32-P4 | ESP32-S2 | ESP32-S3 |
-| ----------------- | ----- | -------- | -------- | -------- | -------- | -------- | -------- | -------- |
+# CNN-Based Handwritten Digit Recognition on ESP32
 
-# _Sample project_
+This project demonstrates a lightweight, embedded neural network inference system that recognizes handwritten digits (0–9) on an **ESP32** microcontroller using data sent via **serial (UART)**. It includes:
 
-(See the README.md file in the upper level 'examples' directory for more information about examples.)
+- A PyTorch-trained digit classifier
+- ESP32 firmware that runs inference on 100 float inputs and display on LCD 16x2
 
-This is the simplest buildable example. The example is used by command `idf.py create-project`
-that copies the project to user specified path and set it's name. For more information follow the [docs page](https://docs.espressif.com/projects/esp-idf/en/latest/api-guides/build-system.html#start-a-new-project)
+## 0. Requirement and Setup
 
-
-
-## How to use example
-We encourage the users to use the example as a template for the new projects.
-A recommended way is to follow the instructions on a [docs page](https://docs.espressif.com/projects/esp-idf/en/latest/api-guides/build-system.html#start-a-new-project).
-
-## Example folder contents
-
-The project **sample_project** contains one source file in C language [main.c](main/main.c). The file is located in folder [main](main).
-
-ESP-IDF projects are built using CMake. The project build configuration is contained in `CMakeLists.txt`
-files that provide set of directives and instructions describing the project's source files and targets
-(executable, library, or both). 
-
-Below is short explanation of remaining files in the project folder.
+In this experiment, I have used ESP-IDF version 5.4.1 and Python 3.9.21 with following package:
 
 ```
-├── CMakeLists.txt
-├── main
-│   ├── CMakeLists.txt
-│   └── main.c
-└── README.md                  This is the file you are currently reading
+numpy==1.26.4
+opencv-python==4.7.0
+pyserial==3.5
+torch==2.0.1
+torchvision==0.15.2
 ```
-Additionally, the sample project contains Makefile and component.mk files, used for the legacy Make based build system. 
-They are not used or needed when building with CMake and idf.py.
+
+
+## 1. System flow diagram
+
+The following image illustrate the overall flow and procedure.
+
+![alt text](assets/flow_diagram.png)
+
+1. First setup the python enviroment and relevant packages.
+2. Prepare training parameter and dataset, then train the model based on PyTorch framework as shown in [training code](mnist_train/train.py).
+3. Extract the weight in C programming form as header file, then load the header file in [testing code](mnist_test/test.c) to evaluate the result.
+4. Deploy the weight file into ESP-IDF project workspace as shown in [this directory](esp32_deploy/mnist_esp32).
