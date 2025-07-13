@@ -1,6 +1,10 @@
 # CNN-Based Handwritten Digit Recognition on ESP32
 
-This project implements a lightweight convolutional neural network (CNN) for handwritten digit recognition (0–9) on an **ESP32** microcontroller. The system processes input data received via **serial (UART)** and displays results on a 16x2 LCD. Key components include:
+This project implements a lightweight convolutional neural network (CNN) for handwritten digit recognition (0–9) on an **ESP32** microcontroller as shown in figure below:
+
+![alt text](assets/objective.png)
+
+The system processes input data received via **serial (UART)** and displays results on a 16x2 LCD. Key components include:
 
 - A PyTorch-trained CNN model for digit classification
 - ESP32 firmware for performing inference on 100 float inputs
