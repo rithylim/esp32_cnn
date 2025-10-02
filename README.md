@@ -25,7 +25,7 @@ torchvision==0.15.2
 The MNIST dataset in JPG format can be downloaded from: [MNIST Dataset](https://nextcloud.sdu.dk/index.php/s/wZg4FLSxgiigJTL/download/MNIST_Dataset_JPG.zip).
 
 ### Setup Instructions
-1. Install ESP-IDF version 5.4.1 following the [official documentation](https://docs.espressif.com/projects/esp-idf/en/v5.4.1/get-started/index.html).
+1. For Arduino IDE, you have to install the board first, then you can call the header file that store the weight.
 2. Download and extract the MNIST dataset using the provided link.
 
 ## 2. System Overview
